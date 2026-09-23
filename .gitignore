@@ -1,0 +1,13 @@
+# 자격증명 및 런타임 산출물 - 절대 커밋 금지
+shared/local_workspace/env_config/.env
+shared/local_workspace/env_config/e2e_creds.txt
+shared/local_workspace/logs/*
+!shared/local_workspace/logs/.gitkeep
+shared/local_workspace/temp_qa_sandbox/*
+!shared/local_workspace/temp_qa_sandbox/.gitkeep
+
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+.vscode
