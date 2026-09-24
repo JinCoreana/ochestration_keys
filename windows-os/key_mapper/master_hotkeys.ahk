@@ -3,12 +3,14 @@
 ; the shared/ logic does not know which physical keys invoke them.
 ;
 ; Every task uses the active Windows system/input language.
+
 #Requires AutoHotkey v2.0
 #SingleInstance Force
 #Include tasks\layer_switch.ahk
 #Include tasks\knob_highlight_copy.ahk
 #Include tasks\screenshot_capture.ahk
-#Include shared\mute_indicator.ahk
+#Include tasks\text_refine.ahk
+#Include shared\popup_indicator.ahk
 
 ; ---- Interactive screenshot to clipboard ----
 F13:: CaptureRegionToClipboard()
@@ -20,7 +22,7 @@ F14:: RunProduction()
 F15:: RunTask("deploy_uat", "", true)
 
 ; ---- Highlighted text refinement ----
-F16:: RunTask("text_refine")
+F16:: RefineSelection()
 
 ; ---- QA automation ----
 F17:: RunTask("qa_playwright_run")

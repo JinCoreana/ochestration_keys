@@ -1,0 +1,44 @@
+{
+  "engine": "gemini",
+  "default_language": "system",
+  "workspace_root": "../..",
+  "engines": {
+    "gemini": {
+      "type": "api",
+      "model": "gemini-flash-latest",
+      "output_to_clipboard": true
+    },
+    "codex": {
+      "command": ["codex", "exec", "--skip-git-repo-check", "-"],
+      "output_to_clipboard": true
+    },
+    "claude_code": {
+      "command": ["claude", "-p"],
+      "output_to_clipboard": true
+    }
+  },
+  "tasks": {
+    "stt_to_terminal": { "prompt": "stt_to_terminal.md", "confirm": false },
+    "deploy_prod": {
+      "prompt": "deploy_prod.md",
+      "confirm": true,
+      "long_press": true
+    },
+    "deploy_uat": { "prompt": "deploy_uat.md", "confirm": true },
+    "text_refine": { "prompt": "text_refine.md", "confirm": false },
+    "qa_playwright_run": { "prompt": "qa_playwright_run.md", "confirm": false },
+    "media_mute_toggle": { "prompt": "media_mute_toggle.md", "confirm": false },
+    "big_o_analysis": { "prompt": "big_o_analysis.md", "confirm": false },
+    "client_comm_template": {
+      "prompt": "client_comm_template.md",
+      "confirm": false
+    },
+    "mr_diff_review": { "prompt": "mr_diff_review.md", "confirm": true },
+    "jira_multi_agent": { "prompt": "jira_multi_agent.md", "confirm": false },
+    "local_dev_bootstrap": {
+      "prompt": "local_dev_bootstrap.md",
+      "confirm": false
+    },
+    "dynatrace_rca": { "prompt": "dynatrace_rca.md", "confirm": false }
+  }
+}

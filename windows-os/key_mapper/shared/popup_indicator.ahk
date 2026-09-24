@@ -1,6 +1,7 @@
-; Native microphone toggle and persistent bottom-right status indicator.
+; Reusable popup indicators and native microphone toggle.
 
 muteIndicatorGui := 0
+statusModalGui := 0
 
 ToggleMicrophone() {
     global muteIndicatorGui
@@ -49,5 +50,26 @@ HideMuteIndicator() {
     if IsObject(muteIndicatorGui) {
         muteIndicatorGui.Destroy()
         muteIndicatorGui := 0
+    }
+}
+
+ShowStatusModal(message, duration := 1000) {
+    global statusModalGui
+    if IsObject(statusModalGui)
+        statusModalGui.Destroy()
+    MonitorGetWorkArea(, &workLeft, &workTop, &workRight, &workBottom)
+    statusModalGui := Gui("+AlwaysOnTop -Caption +ToolWindow", "Status")
+    statusModalGui.BackColor := "8B1E1E"
+    statusModalGui.SetFont("s10 Bold", "Segoe UI")
+    statusModalGui.Add("Text", "w320 h34 Center cFFFFFF", message)
+    statusModalGui.Show("x" . (workLeft + 16) . " y" . (workBottom - 58) . " NA")
+    SetTimer(HideStatusModal, -duration)
+}
+
+HideStatusModal() {
+    global statusModalGui
+    if IsObject(statusModalGui) {
+        statusModalGui.Destroy()
+        statusModalGui := 0
     }
 }
